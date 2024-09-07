@@ -25,10 +25,12 @@ namespace app2game.Controllers
         public IActionResult Index()
         {
             var miscontactos = from o in _context.DataContacto select o;
+            _logger.LogDebug("contactos {miscontactos}", miscontactos);
             var viewModel = new ContactoViewModel{
                 FormContacto = new Contacto(),
                 ListContacto = miscontactos
             };
+             _logger.LogDebug("viewModel {viewModel}", viewModel);
             return View(miscontactos.ToList());
         }
 
