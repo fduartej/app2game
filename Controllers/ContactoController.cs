@@ -31,7 +31,7 @@ namespace app2game.Controllers
                 ListContacto = miscontactos
             };
              _logger.LogDebug("viewModel {viewModel}", viewModel);
-            return View(miscontactos.ToList());
+            return View(viewModel);
         }
 
         [HttpPost]
