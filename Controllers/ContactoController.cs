@@ -51,7 +51,7 @@ namespace app2game.Controllers
 
             ViewData["Message"] = "Se registro el contacto";            
             
-            return View("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
