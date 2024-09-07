@@ -17,3 +17,21 @@ bin/
 
 git config user.name "SU NOMBRE"
 git config user.email "SU CORREO"
+
+## 5. dotnet EF
+
+dotnet tool install --global dotnet-ef
+
+## 6. Indicando donde va la migracion
+
+dotnet ef migrations add <PASO DE MIGRACION> --context <applicativo>.Data.ApplicationDbContext -o "<RUTA DEL APLICATIVO>\Data\Migrations"
+
+eg.
+
+dotnet ef migrations add MigracionInicial --context app2game.Data.ApplicationDbContext -o "C:\opt\code\net\app2game\Data\Migrations"
+
+dotnet ef database update
+
+## opcional para rollback
+
+dotnet ef migrations remove

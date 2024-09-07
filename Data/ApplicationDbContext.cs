@@ -9,4 +9,7 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+
+    public DbSet<app2game.Models.Cliente> DataCliente {get; set; }
+ 
 }
