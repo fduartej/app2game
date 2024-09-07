@@ -23,7 +23,8 @@ namespace app2game.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var miscontactos = from o in _context.DataContacto select o;
+            return View(miscontatos.ToList());
         }
 
         [HttpPost]

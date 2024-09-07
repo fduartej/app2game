@@ -1,4 +1,5 @@
 @model app2game.Models.Contacto
+@model IEnumerable<app2game.Models.Contacto>
 
 @{
     ViewData["Title"] = "Contacto";
@@ -19,16 +20,35 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Message" class="control-label"></label>
-                    <textarea asp-for="Email" class="form-control" />
+                    <textarea asp-for="Message" class="form-control"></textarea>
                 </div>                
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </div>
             </form>
-             <h1>@ViewData["Message"]</h1>
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
+            <h1>@ViewData["Message"]</h1>
+        </div>
+        <div class="col-md-6">
+            <table>
+                <th>
+                    <td>
+                        Email
+                    </td>
+                    <td>
+                        Message
+                    </td>
+                </th>
+                @foreach(var item in Model){
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Message)
+                    </td>
+                </tr>    
+                }
+            </table>
         </div>
     </div>
 </div>
