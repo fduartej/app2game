@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using app2game.Data;
 using app2game.Models;
+using app2game.ViewModel;
 
 namespace app2game.Controllers
 {
@@ -24,15 +25,26 @@ namespace app2game.Controllers
         public IActionResult Index()
         {
             var miscontactos = from o in _context.DataContacto select o;
-            return View(miscontatos.ToList());
+            var viewModel = new ContactoViewModel{
+                FormContacto = new Contacto(),
+                ListContacto = miscontactos
+            };
+            return View(miscontactos.ToList());
         }
 
         [HttpPost]
-        public IActionResult Enviar(Contacto objcontato)
+        public IActionResult Enviar(ContactoViewModel viewModel)
         {
             _logger.LogDebug("Ingreso a Enviar Mensaje");
             
-            _context.Add(objcontato);
+            var contacto = new Contacto
+            {
+                Name = viewModel.FormContacto.Name,
+                Email = viewModel.FormContacto.Email,
+                Message = viewModel.FormContacto.Message
+            };
+
+            _context.Add(contacto);
             _context.SaveChanges();
 
             ViewData["Message"] = "Se registro el contacto";            
