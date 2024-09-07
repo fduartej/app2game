@@ -35,3 +35,11 @@ dotnet ef database update
 ## opcional para rollback
 
 dotnet ef migrations remove
+
+## migraciones con portgress
+
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL --version 8.0.4
+
+## opcional
+
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.8

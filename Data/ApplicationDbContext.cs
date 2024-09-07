@@ -11,5 +11,8 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<app2game.Models.Cliente> DataCliente {get; set; }
+
+    public DbSet<app2game.Models.Contacto> DataContacto {get; set; }
+
  
 }
