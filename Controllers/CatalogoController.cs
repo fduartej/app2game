@@ -27,7 +27,7 @@ namespace app2game.Controllers
             var categorias = from o in _context.DataCategoria select o;
             var catalogos = from o in _context.DataProducto select o;
             dynamic model = new ExpandoObject();
-            model.itemsCategorias = categorias;
+            model.itemCategorias = categorias;
             model.itemCatalogos = catalogos;
             return View(model);
         }
