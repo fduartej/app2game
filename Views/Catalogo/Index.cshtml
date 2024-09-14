@@ -1,17 +1,32 @@
-@model IEnumerable<app2game.Models.Producto>
+@model dynamic;
+@using System.Collections.Generic;
 
 @{
     ViewData["Title"] = "Catalogo";
+    IEnumerable<app2game.Models.Categoria> categorias = new List<Categoria>();
+    IEnumerable<app2game.Models.Producto> catalogos = new List<Producto>();
+    categorias = @Model.itemsCategorias;
+    catalogos = @Model.itemCatalogos;
 }
 
 <h1>@ViewData["Title"]</h1>
 <div class="container">
     <h1>@ViewData["Message"]</h1>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav ms-auto">
+            @foreach (Categoria item in Model.itemCategorias) {
+                <li class="nav-item">
+                    <a class="nav-link" href="#">@Html.DisplayFor(modelItem => item.Nombre)</a>
+                </li>
+              }
+           </ul>
+    </div>
     <div class="row">
       <div class="col">
         <div id="products" class="mb-3">
           <div class="row">
-            @foreach (var item in Model) {
+            @foreach (Producto item in Model.itemCatalogos) {
             <div class="col-sm-4">
               <div class="card mb-3">
                 <div class="card-body">
