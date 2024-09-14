@@ -28,26 +28,25 @@
             <h1>@ViewData["Message"]</h1>
         </div>
         <div class="col-md-6">
-            <table>
-                <th>
-                    <td>
-                        Email
-                    </td>
-                    <td>
-                        Message
-                    </td>
-                </th>
-                @foreach(var item in Model.ListContacto){
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Message)
-                    </td>
-                </tr>    
-                }
-            </table>
-        </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Mensaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model.ListContacto)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Message)</td>
+                                </tr>    
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
     </div>
 </div>
