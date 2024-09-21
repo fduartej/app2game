@@ -15,6 +15,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        var cookieOptions = new CookieOptions
+        {
+            Expires = DateTime.UtcNow.AddMinutes(30), // Duración de la cookie: 30 minutos
+            HttpOnly = true, // La cookie solo puede ser accedida mediante HTTP, no vía JavaScript
+            Secure = true, // La cookie solo se enviará a través de conexiones HTTPS
+            SameSite = SameSiteMode.Strict // Evita que la cookie sea enviada en solicitudes cross-site
+        };
+        Response.Cookies.Append("MyCookieApp", "app2game", cookieOptions);
         return View();
     }
 
