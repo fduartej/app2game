@@ -41,12 +41,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(var item in Model.ListContacto)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.Message)</td>
-                                </tr>    
+                            @if(Model.ListContacto!=null){
+                                @foreach(var item in Model.ListContacto)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Message)</td>
+                                    </tr>    
+                                }
                             }
                         </tbody>
                     </table>
