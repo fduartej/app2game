@@ -9,10 +9,10 @@ namespace app2game.Helper
 {
     public class SendMail
     {
-        private readonly string smtpServer = "smtp.gmail.com";
+        private readonly string smtpServer = "smtp.office365.com";
         private readonly int smtpPort = 587;
         private readonly bool enableSsl = true;
-        private readonly string emailFrom = "losduartedeperu@gmail.com";
+        private readonly string emailFrom = "fduartej@usmp.pe";
         private readonly string emailPassword = "tuContraseña"; 
 
         public async Task EnviarCorreoAsync(string emailTo, string subject, string body,string contraseña)

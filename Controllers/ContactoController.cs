@@ -48,8 +48,11 @@ namespace app2game.Controllers
                 Contrasena = viewModel.FormContacto.Contrasena
             };
 
-            var emailService = new SendMail();
-            await emailService.EnviarCorreoAsync(contacto.Email, "Asunto del correo", contacto.Message,contacto.Contrasena);
+            //var emailService = new SendMail();
+            //await emailService.EnviarCorreoAsync(contacto.Email, "Asunto del correo", contacto.Message,contacto.Contrasena);
+            
+            var emailService2 = new SendMailSendGrid();
+            await emailService2.EnviarCorreoAsync(contacto.Email, "Asunto del correo", contacto.Message,contacto.Contrasena);
 
 
             _context.Add(contacto);
