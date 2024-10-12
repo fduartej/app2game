@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Humanizer;
 using NuGet.Packaging.Signing;
 
 namespace app2game.Integration.CurrencyExchange.dto
@@ -12,12 +13,16 @@ namespace app2game.Integration.CurrencyExchange.dto
         public string date { get; set; }
         public decimal result { get; set; }
         public Info info { get; set; }
+
+        public CurrencyExchangeResponse(){
+            info = new Info();
+        }
     }
 
     public class Info
     {
-        public Timestamp timestamp { get; set; }
-        public string rate { get; set; }
+        public decimal timestamp { get; set; }
+        public decimal rate { get; set; }
 
     }
 }
