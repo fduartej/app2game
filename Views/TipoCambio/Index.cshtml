@@ -1,7 +1,9 @@
 @model app2game.ViewModel.TipoCambioViewModel
 
+
 @{
     ViewBag.Title = "Tipo Cambio";
+    var symbols = ViewData["symbols"] as Dictionary<string, string>;
 }
 
 <div class="container">
@@ -12,17 +14,20 @@
                 <div class="form-group">
                     <label asp-for="From" class="control-label"></label>
                     <select asp-for="From" class="form-control" >
-                        <option value="USD">USD</option>
-                        <option value="PEN">PEN</option>
-                        <option value="EUR">EUR</option>
+                        @foreach (var symbol in symbols)
+                        {
+                            <option value="@symbol.Key">@symbol.Value</option>
+                        }
                     </select>
                 </div>
+    using Microsoft.EntityFrameworkCore.Metadata.Internal;
                 <div class="form-group">
                     <label asp-for="To" class="control-label"></label>
                     <select asp-for="To" class="form-control" >
-                        <option value="USD">USD</option>
-                        <option value="PEN">PEN</option>
-                        <option value="EUR">EUR</option>
+                        @foreach (var symbol in symbols)
+                        {
+                            <option value="@symbol.Key">@symbol.Value</option>
+                        }
                     </select>
 
                 </div>
