@@ -22,6 +22,7 @@ namespace app2game.Controllers.Rest
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<List<Producto>>> GetProductos(){
             var productos = new List<Producto>();
             Producto producto = new Producto();
