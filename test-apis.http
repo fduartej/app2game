@@ -46,3 +46,7 @@ x-rapidapi-key: 0480f8b7a5mshe85c70b898a64c9p12b6eajsn98b3968305bb
 
 GET https://cautious-robot-5gj4jr99p4hvjv6-5232.app.github.dev/api/producto HTTP/1.1
 Accept: application/json
+
+
+GET http://localhost:5232/api/producto/2 HTTP/1.1
+Accept: application/json
