@@ -37,6 +37,18 @@ namespace app2game.Controllers.Rest
                 return NotFound();
             return Ok(productos);
         }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Producto>> GetProducto(int? id)
+        {
+            var producto = await _productoService.Get(id);
+            if(producto == null)
+                return NotFound();
+            return Ok(producto);
+        }
+
   
     }
 }

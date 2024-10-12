@@ -22,8 +22,26 @@ namespace app2game.Service
         public async Task<List<Producto>?> GetAll(){
             if(_context.DataProducto == null )
                 return null;
-            return await _context.DataProducto.ToListAsync();
+            var productos = await _context.DataProducto.ToListAsync();
+            _logger.LogInformation("Productos: {0}", productos);
+            return productos;
         }
+
+        public async Task<Producto?> Get(int? id){
+            if (id == null || _context.DataProducto == null)
+            {
+                return null;
+            }
+
+            var producto = await _context.DataProducto.FindAsync(id);
+            _logger.LogInformation("Producto: {0}", producto);
+            if (producto == null)
+            {
+                return null;
+            }
+            return producto;
+        }
+
 
     }
 }
