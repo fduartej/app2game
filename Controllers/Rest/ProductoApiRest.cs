@@ -6,32 +6,35 @@ using System.Threading.Tasks;
 using app2game.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using app2game.Service;
 
 namespace app2game.Controllers.Rest
 {
 
     [ApiController]
     [Route("api/producto")]
-    public class ProductoRest : ControllerBase
+    public class ProductoApiRest : ControllerBase
     {
-        private readonly ILogger<ProductoRest> _logger;
+        private readonly ILogger<ProductoApiRest> _logger;
+        private readonly ProductoService _productoService;
 
-        public ProductoRest(ILogger<ProductoRest> logger)
+        public ProductoApiRest(
+            ILogger<ProductoApiRest> logger, 
+            ProductoService productoService
+            )
         {
             _logger = logger;
+            _productoService = productoService;
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<Producto>>> GetProductos(){
-            var productos = new List<Producto>();
-            Producto producto = new Producto();
-            producto.Id = 1;
-            producto.Nombre = "Super Mario Bros";
-            producto.Descripcion = "Juego de aventuras";
-            producto.Precio = 100;
-            productos.Add(producto);
+            var productos = await _productoService.GetAll();
             _logger.LogInformation("GetProductos{0}", productos);
+            if(productos == null)
+                return NotFound();
             return Ok(productos);
         }
   

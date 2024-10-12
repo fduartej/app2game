@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using app2game.Data;
 using System.Dynamic;
+using app2game.Service;
 
 namespace app2game.Controllers
 {
@@ -14,18 +15,20 @@ namespace app2game.Controllers
     {
         private readonly ILogger<CatalogoController> _logger;
          private readonly ApplicationDbContext _context;
+         private readonly ProductoService _productoService;
 
         public CatalogoController(ILogger<CatalogoController> logger,
-                ApplicationDbContext context)
+                ApplicationDbContext context, ProductoService productoService)
         {
             _logger = logger;
              _context = context;
+             _productoService = productoService;
         }
 
         public IActionResult Index()
         {
             var categorias = from o in _context.DataCategoria select o;
-            var catalogos = from o in _context.DataProducto select o;
+            var catalogos = _productoService.GetAll();
             dynamic model = new ExpandoObject();
             model.itemCategorias = categorias;
             model.itemCatalogos = catalogos;

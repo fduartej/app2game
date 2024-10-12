@@ -23,6 +23,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<app2game.Integration.CurrencyExchange.CurrencyExchangeIntegration>();
+builder.Services.AddScoped<app2game.Service.ProductoService>();
 
 builder.Services.AddSession(options =>
 {
