@@ -50,7 +50,8 @@ namespace app2game.Controllers
 
             //var emailService = new SendMail();
             //await emailService.EnviarCorreoAsync(contacto.Email, "Asunto del correo", contacto.Message,contacto.Contrasena);
-            
+            var __apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+
             var emailService2 = new SendMailSendGrid();
             await emailService2.EnviarCorreoAsync(contacto.Email, "Asunto del correo", contacto.Message,contacto.Contrasena);
 
