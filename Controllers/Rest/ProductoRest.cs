@@ -24,6 +24,12 @@ namespace app2game.Controllers.Rest
         [HttpGet]
         public async Task<ActionResult<List<Producto>>> GetProductos(){
             var productos = new List<Producto>();
+            Producto producto = new Producto();
+            producto.Id = 1;
+            producto.Nombre = "Super Mario Bros";
+            producto.Descripcion = "Juego de aventuras";
+            producto.Precio = 100;
+            productos.Add(producto);
             _logger.LogInformation("GetProductos{0}", productos);
             return Ok(productos);
         }
