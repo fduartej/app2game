@@ -53,3 +53,41 @@ Accept: application/json
 
 GET http://localhost:5232/api/producto HTTP/1.1
 Accept: application/json
+
+
+GET https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-profile?symbol=AAPL&region=US&lang=en-US HTTP/1.1
+x-rapidapi-key:0480f8b7a5mshe85c70b898a64c9p12b6eajsn98b3968305bb
+
+
+
+
+GET https://steam2.p.rapidapi.com/search/Counter/page/1 HTTP/1.1
+x-rapidapi-key:0480f8b7a5mshe85c70b898a64c9p12b6eajsn98b3968305bb
+
+
+POST https://chatgpt-42.p.rapidapi.com/chatbotapi HTTP/1.1
+Content-Type: application/json
+x-rapidapi-key:0480f8b7a5mshe85c70b898a64c9p12b6eajsn98b3968305bb
+
+{
+  "bot_id": "OEXJ8qFp5E5AwRwymfPts90vrHnmr8yZgNE171101852010w2S0bCtN3THp448W7kDSfyTf3OpW5TUVefz",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hello como estas hoy dia, puedes decirme el clima de lima"
+    }
+  ],
+  "user_id": "",
+  "temperature": 0.9,
+  "top_k": 5,
+  "top_p": 0.9,
+  "max_tokens": 256,
+  "model": "gpt 3.5"
+}
+
+
+{
+  "result": "¡Hola! Estoy bien, gracias por preguntar.\n\nDesafortunadamente, no puedo proporcionarte información en tiempo real sobre el clima en Lima o cualquier otra ciudad, ya que mi base de datos solo incluye información hasta enero de 2023. Si deseas conocer el clima actual en Lima, te recomiendo buscar en un sitio web de pronóstico del tiempo o utilizar una aplicación móvil especializada en meteorología.\n\n¿Hay algo más en lo que pueda ayudarte?",
+  "status": true,
+  "server_code": "cm"
+}
