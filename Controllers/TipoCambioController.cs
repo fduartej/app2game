@@ -24,7 +24,8 @@ namespace app2game.Controllers
         public IActionResult Index()
         {
             var currencySymbols = _currencyExchangeIntegration.GetCurrencySymbols();
-            ViewData["symbols"] = currencySymbols.Result.Symbols;
+            var sortedSymbols = currencySymbols.Result.Symbols.OrderBy(s => s.Value).ToDictionary(s => s.Key, s => s.Value);
+            ViewData["symbols"] = sortedSymbols;
             Helper.SessionExtensions.Set<Dictionary<string, string>>(HttpContext.Session, "symbols",currencySymbols.Result.Symbols);
             return View();
         }
