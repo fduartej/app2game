@@ -27,7 +27,7 @@ namespace app2game.Controllers
         }
 
 
-        public async Task<IActionResult> GetExchangeRate(TipoCambioViewModel viewmodel){
+        public async Task<IActionResult> Exchange(TipoCambioViewModel viewmodel){
             var tipoCambio = await _currencyExchangeIntegration.GetExchangeRate(viewmodel.From, viewmodel.To, viewmodel.Amount);
             ViewData["result"] = tipoCambio.result;
             ViewData["rate"] = tipoCambio.info.rate;
