@@ -25,6 +25,7 @@ namespace app2game.Controllers
         {
             var currencySymbols = _currencyExchangeIntegration.GetCurrencySymbols();
             ViewData["symbols"] = currencySymbols.Result.Symbols;
+            Helper.SessionExtensions.Set<Dictionary<string, string>>(HttpContext.Session, "symbols",currencySymbols.Result.Symbols);
             return View();
         }
 
@@ -33,6 +34,8 @@ namespace app2game.Controllers
             var tipoCambio = await _currencyExchangeIntegration.GetExchangeRate(viewmodel.From, viewmodel.To, viewmodel.Amount);
             ViewData["result"] = tipoCambio.result;
             ViewData["rate"] = tipoCambio.info.rate;
+            Dictionary<string, string> symbols = Helper.SessionExtensions.Get<Dictionary<string, string>>(HttpContext.Session, "symbols");
+            ViewData["symbols"] = symbols;
             return View("Index");
         }
 
